@@ -36,7 +36,12 @@ sort($vals);
 	<div class="container">
 		<h1>SUGGESTION FOR YOUR LUNCH TODAY:</h1>
 		<div class="alert alert-info" role="alert">
-			<h2><?php echo $vals[$randval];?></h2>
+			<h2><?php 
+				if (date('H') > 11 or (date('H') == 11 and date('i') >= 30))
+				     { echo $vals[$randval]; }
+				else
+				     { echo "Not printing result until 11:30"; }
+				?></h2>
 		</div>
 	</div>
 </div>
