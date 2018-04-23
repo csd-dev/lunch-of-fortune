@@ -27,11 +27,11 @@ sort($vals);
 $hour = date('H', time());
 $min = date('i', time());
 
-if ($hour >= 11 and $min >= 20) {
+if ($hour > $WINNER_HOUR or ($hour >= $WINNER_HOUR and $min >= $WINNER_MIN)) {
     $winner = $vals[$randval];
     $editbtn = '<button  class="btn btn-danger btn-block">It is too late to edit your votes today!</button>';
 } else {
-    $winner = 'The winner will be announced after 11:20';
+    $winner = 'The winner will be announced after ' . $WINNER_HOUR . ':' . $WINNER_MIN;
     $editbtn = '<a class="btn btn-primary btn-block"
                     target="_blank"
                     href="https://jsonblob.com/'. $JSON_API_KEY . '">
